@@ -11,94 +11,128 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 检出当前仓库
-      uses: actions/checkout@v4
+      - name: 检出当前仓库
+        uses: actions/checkout@v4
 
-    - name: 设置 Python 环境
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: 安装网络请求依赖
-      run: pip install requests
+      - name: 安装 network 请求依赖
+        run: pip install requests
 
-    - name: 单脚本执行提取逻辑
-      shell: python
-      run: |
-        import os
-        import re
-        import requests
+      - name: 单脚本执行提取逻辑
+        shell: python
+        run: |
+          import os
+          import re
+          import requests
+          from concurrent.futures import ThreadPoolExecutor
 
-        url = "https://raw.githubusercontent.com/youshandefeiyang/sub-web-modify/refs/heads/master/src/views/Subconverter.vue"
-        print("正在拉取 Subconverter.vue 源码...")
-        
-        try:
-            response = requests.get(url, timeout=15)
-            if response.status_code != 200:
-                print(f"拉取失败，状态码: {response.status_code}")
-                exit(1)
-            content = response.text
-        except Exception as e:
-            print(f"网络错误: {e}")
-            exit(1)
+          url = "https://raw.githubusercontent.com/youshandefeiyang/sub-web-modify/refs/heads/master/src/views/Subconverter.vue"
+          print("正在拉取 Subconverter.vue 源码...")
+          
+          try:
+              response = requests.get(url, timeout=15)
+              if response.status_code != 200:
+                  print(f"拉取失败，状态码: {response.status_code}")
+                  exit(1)
+              content = response.text
+          except Exception as e:
+              print(f"网络错误: {e}")
+              exit(1)
 
-        # 匹配 remoteConfig: [ 到下面的 form: { 之间的文本
-        block_match = re.search(r'remoteConfig:\s*\[(.*?)\]\s*\}\s*,\s*form:', content, re.DOTALL)
-        if not block_match:
-            # 兼容处理：如果没有匹配到硬边界，采用贪婪边界匹配
-            block_match = re.search(r'remoteConfig:\s*\[(.*?)form:', content, re.DOTALL)
-            
-        if not block_match:
-            print("未能在源码中匹配到 remoteConfig 数据块")
-            exit(1)
-            
-        config_block_text = block_match.group(1)
+          # 匹配 remoteConfig: [ 到下面的 form: { 之间的文本
+          block_match = re.search(r'remoteConfig:\s*\[(.*?)\]\s*\}\s*,\s*form:', content, re.DOTALL)
+          if not block_match:
+              # 兼容处理：如果没有匹配到硬边界，采用贪婪边界匹配
+              block_match = re.search(r'remoteConfig:\s*\[(.*?)form:', content, re.DOTALL)
+              
+          if not block_match:
+              print("未能在源码中匹配到 remoteConfig 数据块")
+              exit(1)
+              
+          config_block_text = block_match.group(1)
 
-        group_chunks = re.findall(r'\{\s*label:\s*["\']([^"\']+)["\'],\s*options:\s*\[(.*?)\]\s*\}', config_block_text, re.DOTALL)
+          group_chunks = re.findall(r'\{\s*label:\s*["\']([^"\']+)["\'],\s*options:\s*\[(.*?)\]\s*\}', config_block_text, re.DOTALL)
 
-        # 排除 [cite: 13, 19]
-        exclude_labels = ["通用", "ACL规则", "特殊"]
-        extracted_lines = []
+          # 排除
+          exclude_labels = ["通用", "ACL规则", "特殊"]
+          raw_items = []
 
-        for label, options_text in group_chunks:
-            label = label.strip()
-            if label in exclude_labels:
-                print(f"-> 已跳过大组: [{label}]")
-                continue
-            
-            print(f"-> 正在解析大组: [{label}]")
-            
-            # 3. 在合法的组内精确抓取 { label: "xxx", value: "yyy" }
-            item_pattern = r'\{\s*label:\s*["\']([^"\']+)["\'],\s*value:\s*["\']([^"\']+)["\']\s*\}'
-            items = re.findall(item_pattern, options_text, re.DOTALL)
-            
-            for item_label, item_value in items:
-                extracted_lines.append(f"{item_label.strip()}|{item_value.strip()}")
+          for label, options_text in group_chunks:
+              label = label.strip()
+              if label in exclude_labels:
+                  print(f"-> 已跳过大组: [{label}]")
+                  continue
+              
+              print(f"-> 正在解析大组: [{label}]")
+              
+              # 3. 在合法的组内精确抓取 { label: "xxx", value: "yyy" }
+              item_pattern = r'\{\s*label:\s*["\']([^"\']+)["\'],\s*value:\s*["\']([^"\']+)["\']\s*\}'
+              items = re.findall(item_pattern, options_text, re.DOTALL)
+              
+              for item_label, item_value in items:
+                  raw_items.append((item_label.strip(), item_value.strip()))
 
-        output_dir = "subconfig"
-        output_file = os.path.join(output_dir, "all.txt")
-        
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-            
-        if not extracted_lines:
-            print("警告: 提取到的配置条数为 0，可能页面结构已被大幅修改。")
-            exit(1)
-            
-        with open(output_file, "w", encoding="utf-8") as f:
-            f.write("\n".join(extracted_lines) + "\n")
-            
-        print(f"\n提取成功！共过滤并保存了 {len(extracted_lines)} 条配置。")
+          if not raw_items:
+              print("警告: 提取到的原始配置条数为 0，可能页面结构已被大幅修改。")
+              exit(1)
 
-    - name: 检查文件变动并提交
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        
-        if [ -n "$(git status --porcelain subconfig/all.txt)" ]; then
-          git add subconfig/all.txt
-          git commit -m "youshandefeiyang $(date '+%Y-%m-%d %H:%M:%S')"
-          git push
-        else
-          echo "配置没有发生任何变动，跳过提交。"
-        fi
+          # 验证 URL 有效性
+          print(f"\n开始验证 {len(raw_items)} 条配置链接的有效性...")
+          valid_lines = []
+
+          def check_url(item):
+              label, target_url = item
+              if not target_url.startswith("http"):
+                  return None
+              try:
+                  res = requests.get(target_url, timeout=10)
+                  if res.status_code == 404 or "404: Not Found" in res.text:
+                      print(f"❌ [失效] {label} -> 链接返回 404 或失效标识")
+                      return None
+                  elif res.status_code != 200:
+                      print(f"⚠️ [异常] {label} -> 状态码: {res.status_code}，暂保留")
+                      return f"{label}|{target_url}"
+                  else:
+                      return f"{label}|{target_url}"
+              except Exception as e:
+                  print(f"⚠️ [连接超时/错误] {label} -> {e}，暂保留")
+                  return f"{label}|{target_url}"
+
+          # 开启 10 个线程并发检查
+          with ThreadPoolExecutor(max_workers=10) as executor:
+              results = executor.map(check_url, raw_items)
+              for result in results:
+                  if result:
+                      valid_lines.append(result)
+
+          output_dir = "subconfig"
+          output_file = os.path.join(output_dir, "all.txt")
+          
+          if not os.path.exists(output_dir):
+              os.makedirs(output_dir)
+              
+          if not valid_lines:
+              print("警告: 过滤后的有效配置条数为 0。")
+              exit(1)
+              
+          with open(output_file, "w", encoding="utf-8") as f:
+              f.write("\n".join(valid_lines) + "\n")
+              
+          print(f"\n提取并过滤成功！共保存了 {len(valid_lines)} 条有效配置（移除了 {len(raw_items) - len(valid_lines)} 条失效配置）。")
+
+      - name: 检查文件变动并提交
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          if [ -n "$(git status --porcelain subconfig/all.txt)" ]; then
+            git add subconfig/all.txt
+            git commit -m "youshandefeiyang $(date '+%Y-%m-%d %H:%M:%S')"
+            git push
+          else
+            echo "配置没有发生任何变动，跳过提交。"
+          fi

@@ -1,0 +1,63 @@
+常规规则|https://raw.githubusercontent.com/flyhigherpi/merlinclash_clash_related/master/Rule_config/ZHANG.ini
+酷酷自用|https://raw.githubusercontent.com/xiaoshenxian233/cool/rule/complex.ini
+PharosPro无测速|https://subweb.s3.fr-par.scw.cloud/RemoteConfig/special/phaors.ini
+分区域故障转移|https://raw.githubusercontent.com/flyhigherpi/merlinclash_clash_related/master/Rule_config/ZHANG_Area_Fallback.ini
+分区域自动测速|https://raw.githubusercontent.com/flyhigherpi/merlinclash_clash_related/master/Rule_config/ZHANG_Area_Urltest.ini
+分区域无自动测速|https://raw.githubusercontent.com/flyhigherpi/merlinclash_clash_related/master/Rule_config/ZHANG_Area_NoAuto.ini
+OoHHHHHHH|https://raw.githubusercontent.com/OoHHHHHHH/ini/master/config.ini
+CFW-TAP|https://raw.githubusercontent.com/OoHHHHHHH/ini/master/cfw-tap.ini
+lhl77全分组（定期更新）|https://raw.githubusercontent.com/lhl77/sub-ini/main/tsutsu-full.ini
+lhl77简易版（定期更新）|https://raw.githubusercontent.com/lhl77/sub-ini/main/tsutsu-mini-gfw.ini
+ConnersHua 神机规则 Outbound|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/connershua_new.ini
+ConnersHua 神机规则 Inbound 回国专用|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/connershua_backtocn.ini
+lhie1 洞主规则（使用 Clash 分组规则）|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/lhie1_clash.ini
+lhie1 洞主规则完整版|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/lhie1_dler.ini
+eHpo1 规则|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/ehpo1_main.ini
+多策略组默认白名单模式|https://raw.nameless13.com/api/public/dl/ROzQqi2S/white.ini
+多策略组可以有效减少审计触发|https://raw.nameless13.com/api/public/dl/ptLeiO3S/mayinggfw.ini
+精简策略默认白名单|https://raw.nameless13.com/api/public/dl/FWSh3dXz/easy3.ini
+多策略增加SMTP策略|https://raw.nameless13.com/api/public/dl/L_-vxO7I/youtube.ini
+无策略入门推荐|https://raw.nameless13.com/api/public/dl/zKF9vFbb/easy.ini
+无策略入门推荐国家分组|https://raw.nameless13.com/api/public/dl/E69bzCaE/easy2.ini
+无策略仅IPIP CN + Final|https://raw.nameless13.com/api/public/dl/XHr0miMg/ipip.ini
+无策略魅影vip分组|https://raw.nameless13.com/api/public/dl/BBnfb5lD/MAYINGVIP.ini
+品云专属配置（仅香港区域分组）|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/Examine.ini
+品云专属配置（全地域分组）|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/Examine_Full.ini
+nzw9314 规则|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/nzw9314_custom.ini
+maicoo-l 规则|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/maicoo-l_custom.ini
+DlerCloud Platinum 李哥定制规则|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/dlercloud_lige_platinum.ini
+DlerCloud Gold 李哥定制规则|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/dlercloud_lige_gold.ini
+DlerCloud Silver 李哥定制规则|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/dlercloud_lige_silver.ini
+ProxyStorage自用|https://unpkg.com/proxy-script/config/Clash/clash.ini
+ShellClash修改版规则 (by UlinoyaPed)|https://github.com/UlinoyaPed/ShellClash/raw/master/rules/ShellClash.ini
+EXFLUX|https://gist.github.com/jklolixxs/16964c46bad1821c70fa97109fd6faa2/raw/EXFLUX.ini
+NaNoport|https://gist.github.com/jklolixxs/32d4e9a1a5d18a92beccf3be434f7966/raw/NaNoport.ini
+CordCloud|https://gist.github.com/jklolixxs/dfbe0cf71ffc547557395c772836d9a8/raw/CordCloud.ini
+BigAirport|https://gist.github.com/jklolixxs/e2b0105c8be6023f3941816509a4c453/raw/BigAirport.ini
+跑路云|https://gist.github.com/jklolixxs/9f6989137a2cfcc138c6da4bd4e4cbfc/raw/PaoLuCloud.ini
+WaveCloud|https://gist.github.com/jklolixxs/fccb74b6c0018b3ad7b9ed6d327035b3/raw/WaveCloud.ini
+几鸡|https://gist.github.com/jklolixxs/bfd5061dceeef85e84401482f5c92e42/raw/JiJi.ini
+四季加速|https://gist.github.com/jklolixxs/6ff6e7658033e9b535e24ade072cf374/raw/SJ.ini
+ImmTelecom|https://gist.github.com/jklolixxs/24f4f58bb646ee2c625803eb916fe36d/raw/ImmTelecom.ini
+AmyTelecom|https://gist.github.com/jklolixxs/b53d315cd1cede23af83322c26ce34ec/raw/AmyTelecom.ini
+LinkCube|https://subweb.s3.fr-par.scw.cloud/RemoteConfig/customized/convenience.ini
+Miaona|https://gist.github.com/jklolixxs/ff8ddbf2526cafa568d064006a7008e7/raw/Miaona.ini
+Foo&Friends|https://gist.github.com/jklolixxs/df8fda1aa225db44e70c8ac0978a3da4/raw/Foo&Friends.ini
+ABCloud|https://gist.github.com/jklolixxs/b1f91606165b1df82e5481b08fd02e00/raw/ABCloud.ini
+咸鱼|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/customized/xianyu.ini
+便利店|https://subweb.oss-cn-hongkong.aliyuncs.com/RemoteConfig/customized/convenience.ini
+CNIX|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/SSRcloud.ini
+Nirvana|https://raw.githubusercontent.com/Mazetsz/ACL4SSR/master/Clash/config/V2rayPro.ini
+V2Pro|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/V2Pro.ini
+史迪仔-自动测速|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/Stitch.ini
+史迪仔-负载均衡|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/Stitch-Balance.ini
+Maying|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/customized/maying.ini
+Ytoo|https://subweb.s3.fr-par.scw.cloud/RemoteConfig/customized/ytoo.ini
+w8ves|https://raw.nameless13.com/api/public/dl/M-We_Fn7/w8ves.ini
+NyanCAT|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/customized/nyancat.ini
+Nexitally|https://subweb.s3.fr-par.scw.cloud/RemoteConfig/customized/nexitally.ini
+SoCloud|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/customized/socloud.ini
+ARK|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/customized/ark.ini
+N3RO|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/n3ro_optimized.ini
+Scholar|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/scholar_optimized.ini
+Flowercloud|https://subweb.s3.fr-par.scw.cloud/RemoteConfig/customized/flower.ini

@@ -59,7 +59,7 @@ jobs:
           ]
 
           folders = {
-              "Clash/1minute": 60,
+              "Clash/1minutes": 60,
               "Clash/5minutes": 300,
               "Clash/10minutes": 600,
               "Clash/15minutes": 900,

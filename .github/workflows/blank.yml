@@ -127,7 +127,7 @@ jobs:
                       lines = content_str.splitlines()
                       new_lines = []
                       for line in lines:
-                          if line.startswith("custom_proxy_group=") and ",," in line:
+                          if line.startswith("custom_proxy_group=") and interval_pattern.search(line):
                               line = interval_pattern.sub(lambda m: f"{m.group(1)}{seconds}{m.group(2) if m.group(2) else ''}", line)
                           new_lines.append(line)
                       

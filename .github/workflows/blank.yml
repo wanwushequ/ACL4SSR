@@ -26,7 +26,7 @@ jobs:
 
       - name: Create required directories inside Clash
         run: |
-          mkdir -p Clash/1minutes Clash/5minutes Clash/10minutes Clash/15minutes Clash/30minutes Clash/60minutes
+          mkdir -p Clash/1minutes Clash/5minutes Clash/10minutes Clash/15minutes Clash/30minutes Clash/60minutes Clash/120minutes
 
       - name: Run sync and modification script
         shell: python
@@ -64,7 +64,8 @@ jobs:
               "Clash/10minutes": 600,
               "Clash/15minutes": 900,
               "Clash/30minutes": 1800,
-              "Clash/60minutes": 3600
+              "Clash/60minutes": 3600,
+              "Clash/120minutes": 7200
           }
 
           def get_sha256(data):

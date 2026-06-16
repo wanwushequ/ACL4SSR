@@ -9,6 +9,14 @@ ConnersHua 神机规则 Inbound 回国专用|https://gist.githubusercontent.com/
 lhie1 洞主规则（使用 Clash 分组规则）|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/lhie1_clash.ini
 lhie1 洞主规则完整版|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/lhie1_dler.ini
 eHpo1 规则|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/ehpo1_main.ini
+多策略组默认白名单模式|https://raw.nameless13.com/api/public/dl/ROzQqi2S/white.ini
+多策略组可以有效减少审计触发|https://raw.nameless13.com/api/public/dl/ptLeiO3S/mayinggfw.ini
+精简策略默认白名单|https://raw.nameless13.com/api/public/dl/FWSh3dXz/easy3.ini
+多策略增加SMTP策略|https://raw.nameless13.com/api/public/dl/L_-vxO7I/youtube.ini
+无策略入门推荐|https://raw.nameless13.com/api/public/dl/zKF9vFbb/easy.ini
+无策略入门推荐国家分组|https://raw.nameless13.com/api/public/dl/E69bzCaE/easy2.ini
+无策略仅IPIP CN + Final|https://raw.nameless13.com/api/public/dl/XHr0miMg/ipip.ini
+无策略魅影vip分组|https://raw.nameless13.com/api/public/dl/BBnfb5lD/MAYINGVIP.ini
 品云专属配置（仅香港区域分组）|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/Examine.ini
 品云专属配置（全地域分组）|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/Examine_Full.ini
 nzw9314 规则|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/nzw9314_custom.ini
@@ -27,6 +35,7 @@ V2Pro|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/V2Pro.ini
 史迪仔-负载均衡|https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/Stitch-Balance.ini
 Maying|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/customized/maying.ini
 Ytoo|https://subweb.s3.fr-par.scw.cloud/RemoteConfig/customized/ytoo.ini
+w8ves|https://raw.nameless13.com/api/public/dl/M-We_Fn7/w8ves.ini
 NyanCAT|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/customized/nyancat.ini
 Nexitally|https://subweb.s3.fr-par.scw.cloud/RemoteConfig/customized/nexitally.ini
 SoCloud|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/customized/socloud.ini

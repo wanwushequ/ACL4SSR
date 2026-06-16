@@ -1,0 +1,145 @@
+name: subconfig2
+
+on:
+  schedule:
+    # 北京时间凌晨 1:30（错开之前的脚本时间）
+    - cron: '30 17 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-config:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出当前仓库
+        uses: actions/checkout@v4
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 安装 network 请求依赖
+        run: pip install requests
+
+      - name: 单脚本执行提取逻辑
+        shell: python
+        run: |
+          import os
+          import re
+          import requests
+          from concurrent.futures import ThreadPoolExecutor
+
+          url = "https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/refs/heads/main/Overwrite/THEINI/README.md"
+          print("正在拉取 README.md 源码...")
+          
+          try:
+              response = requests.get(url, timeout=15)
+              if response.status_code != 200:
+                  print(f"拉取失败，状态码: {response.status_code}")
+                  exit(1)
+              content = response.text
+          except Exception as e:
+              print(f"网络错误: {e}")
+              exit(1)
+
+          # 1. 按照 <h3 id='xxx'> 进行大块切分，方便归类并排除 ACL4SSR
+          # 正则匹配每个包含 h3 标题及其下面表格的内容块
+          sections = re.findall(r"<h3 id='([^']+)'>([^<]+)</h3>([\s\S]*?)(?=<h3 id=|$)", content)
+          
+          raw_items = []
+          
+          for sec_id, sec_title, sec_content in sections:
+              sec_id = sec_id.strip()
+              sec_title = sec_title.strip()
+              
+              # 排除 ACL4SSR 系列
+              if "acl4ssr" in sec_id.lower() or "acl4ssr" in sec_title.lower():
+                  print(f"-> 已跳过大组: [{sec_title}]")
+                  continue
+                  
+              print(f"-> 正在解析大组: [{sec_title}]")
+              
+              # 2. 解析 Markdown 表格行，提取 `文件名` 和 [Source](链接)
+              # 匹配形如: | raw | `kclash.ini` | [Source](https://...) |
+              table_lines = re.findall(r"\|\s*[^\|]+\s*\|\s*`([^`]+)`\s*\|\s*\[Source\]\(([^)]+)\)\s*\|", sec_content)
+              
+              for filename, target_url in table_lines:
+                  # 存储：(分类名, 文件名, 目标URL)
+                  raw_items.append((sec_title, filename.strip(), target_url.strip()))
+
+          if not raw_items:
+              print("警告: 提取到的原始配置条数为 0，可能 Markdown 结构已被大幅修改。")
+              exit(1)
+
+          # 3. 验证 URL 有效性
+          print(f"\n开始验证 {len(raw_items)} 条配置链接的有效性...")
+          valid_data = []
+
+          def check_url(item):
+              category, filename, target_url = item
+              if not target_url.startswith("http"):
+                  return None
+              try:
+                  res = requests.get(target_url, timeout=10)
+                  if res.status_code == 404 or "404: Not Found" in res.text:
+                      print(f"❌ [失效] {filename} -> 链接返回 404 或失效标识")
+                      return None
+                  elif res.status_code != 200:
+                      print(f"⚠️ [异常] {filename} -> 状态码: {res.status_code}，暂保留")
+                      return (category, filename, target_url)
+                  else:
+                      return (category, filename, target_url)
+              except Exception as e:
+                  print(f"⚠️ [连接超时/错误] {filename} -> {e}，暂保留")
+                  return None
+
+          # 开启 10 个线程并发检查
+          with ThreadPoolExecutor(max_workers=10) as executor:
+              results = executor.map(check_url, raw_items)
+              for result in results:
+                  if result:
+                      valid_data.append(result)
+
+          # 4. 根据分类排序：通用配置最前，机场定制最后，其余居中
+          def get_sort_key(item):
+              category = item[0]
+              if "通用" in category:
+                  return (0, category)    # 优先级最高
+              elif "机场" in category:
+                  return (2, category)    # 优先级最低
+              else:
+                  return (1, category)    # 其它未知分类居中
+
+          valid_data.sort(key=get_sort_key)
+
+          # 5. 按照格式拼接字符串: "通用配置 kclash.ini|https://..."
+          valid_lines = [f"{cat} {fname}|{url}" for cat, fname, url in valid_data]
+
+          output_dir = "subconfig"
+          output_file = os.path.join(output_dir, "all2.txt")
+          
+          if not os.path.exists(output_dir):
+              os.makedirs(output_dir)
+              
+          if not valid_lines:
+              print("警告: 过滤后的有效配置条数为 0。")
+              exit(1)
+              
+          with open(output_file, "w", encoding="utf-8") as f:
+              f.write("\n".join(valid_lines) + "\n")
+              
+          print(f"\n提取并过滤成功！共保存了 {len(valid_lines)} 条有效配置到 all2.txt（移除了 {len(raw_items) - len(valid_lines)} 条失效配置）。")
+
+      - name: 检查文件变动并提交
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          if [ -n "$(git status --porcelain subconfig/all2.txt)" ]; then
+            git add subconfig/all2.txt
+            git commit -m "HenryChiao INI $(date '+%Y-%m-%d %H:%M:%S')"
+            git push
+          else
+            echo "配置没有发生任何变动，跳过提交。"
+          fi

@@ -34,6 +34,14 @@
 通用配置 lhie1_clash.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/lhie1_clash.ini
 通用配置 lhie1_dler.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/lhie1_dler.ini
 通用配置 ehpo1_main.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/ehpo1_main.ini
+通用配置 white.ini|https://raw.nameless13.com/api/public/dl/ROzQqi2S/white.ini
+通用配置 mayinggfw.ini|https://raw.nameless13.com/api/public/dl/ptLeiO3S/mayinggfw.ini
+通用配置 easy3.ini|https://raw.nameless13.com/api/public/dl/FWSh3dXz/easy3.ini
+通用配置 youtube.ini|https://raw.nameless13.com/api/public/dl/L_-vxO7I/youtube.ini
+通用配置 easy.ini|https://raw.nameless13.com/api/public/dl/zKF9vFbb/easy.ini
+通用配置 easy2.ini|https://raw.nameless13.com/api/public/dl/E69bzCaE/easy2.ini
+通用配置 ipip.ini|https://raw.nameless13.com/api/public/dl/XHr0miMg/ipip.ini
+通用配置 MAYINGVIP.ini|https://raw.nameless13.com/api/public/dl/BBnfb5lD/MAYINGVIP.ini
 通用配置 nzw9314_custom.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/nzw9314_custom.ini
 通用配置 maicoo-l_custom.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/maicoo-l_custom.ini
 通用配置 dlercloud_lige_platinum.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/dlercloud_lige_platinum.ini
@@ -41,6 +49,7 @@
 通用配置 dlercloud_lige_silver.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/dlercloud_lige_silver.ini
 通用配置 clash.ini|https://unpkg.com/proxy-script/config/Clash/clash.ini
 通用配置 ShellClash.ini|https://github.com/UlinoyaPed/ShellClash/raw/master/rules/ShellClash.ini
+通用配置 w8ves.ini|https://raw.nameless13.com/api/public/dl/M-We_Fn7/w8ves.ini
 通用配置 n3ro_optimized.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/n3ro_optimized.ini
 通用配置 scholar_optimized.ini|https://gist.githubusercontent.com/tindy2013/1fa08640a9088ac8652dbd40c5d2715b/raw/scholar_optimized.ini
 通用配置 netease.ini|https://raw.githubusercontent.com/SleepyHeeead/subconverter-config/master/remote-config/special/netease.ini

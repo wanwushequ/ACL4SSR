@@ -61,20 +61,22 @@ jobs:
           exclude_labels = ["通用", "ACL规则", "特殊"]
           raw_items = []
 
-          for label, options_text in group_chunks:
-              label = label.strip()
-              if label in exclude_labels:
-                  print(f"-> 已跳过大组: [{label}]")
+          for group_label, options_text in group_chunks:
+              group_label = group_label.strip()
+              if group_label in exclude_labels:
+                  print(f"-> 已跳过大组: [{group_label}]")
                   continue
               
-              print(f"-> 正在解析大组: [{label}]")
+              print(f"-> 正在解析大组: [{group_label}]")
               
               # 3. 在合法的组内精确抓取 { label: "xxx", value: "yyy" }
               item_pattern = r'\{\s*label:\s*["\']([^"\']+)["\'],\s*value:\s*["\']([^"\']+)["\']\s*\}'
               items = re.findall(item_pattern, options_text, re.DOTALL)
               
               for item_label, item_value in items:
-                  raw_items.append((item_label.strip(), item_value.strip()))
+                  # 将大组标签拼接到子项 label 前面，用空格分隔
+                  full_label = f"{group_label} {item_label.strip()}"
+                  raw_items.append((full_label.strip(), item_value.strip()))
 
           if not raw_items:
               print("警告: 提取到的原始配置条数为 0，可能页面结构已被大幅修改。")

@@ -96,12 +96,13 @@ jobs:
                       print(f"❌ [失效] {label} -> 链接返回 404 或失效标识")
                       return None
                   elif res.status_code != 200:
-                      print(f"⚠️ [异常] {label} -> 状态码: {res.status_code}，暂保留")
-                      return f"{label}|{target_url}"
+                      print(f"⚠️ [异常] {label} -> 状态码: {res.status_code}，暂不保留")
+                      #return f"{label}|{target_url}"
+                      return None
                   else:
                       return f"{label}|{target_url}"
               except Exception as e:
-                  print(f"⚠️ [连接超时/错误] {label} -> {e}，暂保留")
+                  print(f"⚠️ [连接超时/错误] {label} -> {e}，暂不保留")
                   #return f"{label}|{target_url}"
                   return None
 

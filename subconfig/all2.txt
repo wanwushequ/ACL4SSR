@@ -19,4 +19,5 @@
 通用配置 DustinWin_Lite_NoAds.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Lite_NoAds.ini
 通用配置 DustinWin_Blacklist_NoAds.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Blacklist_NoAds.ini
 通用配置 DustinWin_Light.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Light.ini
+通用配置 DustinWin_Nano.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Nano.ini
 通用配置 Subconverter.vue|https://raw.githubusercontent.com/youshandefeiyang/sub-web-modify/main/src/views/Subconverter.vue

@@ -2,7 +2,6 @@
 通用配置 Cash-All.ini|https://raw.githubusercontent.com/liandu2024/clash/main/Cash-All.ini
 通用配置 Clash-Full.ini|https://raw.githubusercontent.com/liandu2024/clash/main/Clash-Full.ini
 通用配置 Clash-LIAN.ini|https://raw.githubusercontent.com/liandu2024/clash/main/Clash-LIAN.ini
-通用配置 Clash-S01.ini|https://raw.githubusercontent.com/liandu2024/clash/main/Clash-S01.ini
 通用配置 Clash-mini.ini|https://raw.githubusercontent.com/liandu2024/clash/main/Clash-mini.ini
 通用配置 clash-all-globe-noicon.ini|https://raw.githubusercontent.com/liandu2024/clash/main/proxy/clash-all-globe-noicon.ini
 通用配置 ShellClash.ini|https://raw.githubusercontent.com/juewuy/ShellCrash/dev/rules/ShellClash.ini
@@ -14,10 +13,8 @@
 通用配置 lhie1_clash.ini|https://raw.githubusercontent.com/juewuy/ShellCrash/dev/rules/lhie1_clash.ini
 通用配置 lhie1_dler.ini|https://raw.githubusercontent.com/juewuy/ShellCrash/dev/rules/lhie1_dler.ini
 通用配置 DustinWin_Full.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Full.ini
-通用配置 DustinWin_Full_NoAds.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Full_NoAds.ini
 通用配置 DustinWin_Lite.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Lite.ini
 通用配置 DustinWin_Lite_NoAds.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Lite_NoAds.ini
 通用配置 DustinWin_Blacklist_NoAds.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Blacklist_NoAds.ini
-通用配置 DustinWin_Light.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Light.ini
 通用配置 DustinWin_Nano.ini|https://raw.githubusercontent.com/DustinWin/ruleset_geodata/master/rule_templates/DustinWin_Nano.ini
 通用配置 Subconverter.vue|https://raw.githubusercontent.com/youshandefeiyang/sub-web-modify/main/src/views/Subconverter.vue
